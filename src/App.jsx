@@ -1,17 +1,17 @@
-import { useState } from "react";
-import "./App.css";
-import BaristaForm from "./Components/BaristaForm";
-import drinksJson from "./drinks.json";
+import { useState } from "react"
+import "./App.css"
+import BaristaForm from "./Components/BaristaForm"
+import drinksJson from "./drinks.json"
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [currentDrink, setCurrentDrink] = useState("");
-  const [trueRecipe, setTrueRecipe] = useState({});
+  const [count, setCount] = useState(0)
+  const [currentDrink, setCurrentDrink] = useState("")
+  const [trueRecipe, setTrueRecipe] = useState({})
 
-  const [correctTemp, setCorrectTemp] = useState(null);
-  const [correctSyrup, setCorrectSyrup] = useState(null);
-  const [correctMilk, setCorrectMilk] = useState(null);
-  const [correctBlended, setCorrectBlended] = useState(null);
+  const [correctTemp, setCorrectTemp] = useState(null)
+  const [correctSyrup, setCorrectSyrup] = useState(null)
+  const [correctMilk, setCorrectMilk] = useState(null)
+  const [correctBlended, setCorrectBlended] = useState(null)
 
   const [inputs, setInputs] = useState({
     temperature: "",
@@ -23,26 +23,26 @@ function App() {
   const getNextDrink = () => {
     let randomDrinkIndex = Math.floor(
       Math.random() * drinksJson.drinksJson.length
-    );
-    setCurrentDrink(drinksJson.drinksJson[randomDrinkIndex].name);
-    setTrueRecipe(drinksJson.drinksJson[randomDrinkIndex].ingredients);
+    )
+    setCurrentDrink(drinksJson.drinksJson[randomDrinkIndex].name)
+    setTrueRecipe(drinksJson.drinksJson[randomDrinkIndex].ingredients)
 
     // reset the wrong guesses the user made when on a new drink
-    setCorrectTemp(null);
-    setCorrectSyrup(null);
-    setCorrectMilk(null);
-    setCorrectBlended(null);
-  };
+    setCorrectTemp(null)
+    setCorrectSyrup(null)
+    setCorrectMilk(null)
+    setCorrectBlended(null)
+  }
 
   const onCheckAnswer = () => {
-    console.log("True Recipe:", trueRecipe);
-    console.log("Inputs:", inputs);
+    console.log("True Recipe:", trueRecipe)
+    console.log("Inputs:", inputs)
 
-    setCorrectTemp(trueRecipe.temp === inputs["temperature"]);
-    setCorrectSyrup(trueRecipe.syrup === inputs["syrup"]);
-    setCorrectMilk(trueRecipe.milk === inputs["milk"]);
-    setCorrectBlended(trueRecipe.blended === inputs["blended"]);
-  };
+    setCorrectTemp(trueRecipe.temp === inputs["temperature"])
+    setCorrectSyrup(trueRecipe.syrup === inputs["syrup"])
+    setCorrectMilk(trueRecipe.milk === inputs["milk"])
+    setCorrectBlended(trueRecipe.blended === inputs["blended"])
+  }
 
   return (
     <div>
